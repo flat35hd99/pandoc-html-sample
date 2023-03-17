@@ -9,7 +9,7 @@ directory:
 	mkdir -p dist
 
 dist/%.html: src/%.md
-	$(PANDOC) -s -o $@ $^
+	$(PANDOC) -s --toc -o $@ $^
 
 clean:
 	rm -rf dist

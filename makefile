@@ -1,11 +1,14 @@
 PANDOC=pandoc
 
-all: directory dist/index.html
+MD=$(shell ls src/*.md)
+HTML=$(MD:src/%.md=dist/%.html)
+
+all: directory $(HTML)
 
 directory:
 	mkdir -p dist
 
-dist/index.html: src/index.md
+dist/%.html: src/%.md
 	$(PANDOC) -s -o $@ $^
 
 clean:

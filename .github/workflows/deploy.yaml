@@ -31,7 +31,7 @@ jobs:
         run: make
 
       - name: Upload page artifacts
-        uses: upload-pages-artifact@v1 # This action is specific to github pages
+        uses: actions/upload-pages-artifact@v1 # This action is specific to github pages
         with:
           path: ./dist
 

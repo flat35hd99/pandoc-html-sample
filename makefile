@@ -1,15 +1,17 @@
-PANDOC=pandoc
+SRC_DIR := src
+DIST_DIR := dist
 
-MD=$(shell ls src/*.md)
-HTML=$(MD:src/%.md=dist/%.html)
+# Find all .md files recursively in SRC_DIR
+SRC_FILES := $(shell find $(SRC_DIR) -type f -name "*.md")
+DIST_FILES := $(patsubst $(SRC_DIR)/%.md,$(DIST_DIR)/%.html,$(SRC_FILES))
 
-all: directory $(HTML)
+.PHONY: all clean
 
-directory:
-	mkdir -p dist
+all: $(DIST_FILES)
 
-dist/%.html: src/%.md
-	$(PANDOC) -s --toc -o $@ $^
+$(DIST_DIR)/%.html: $(SRC_DIR)/%.md
+	@mkdir -p $(@D)
+	pandoc -s -o $@ $<
 
 clean:
-	rm -rf dist
+	rm -rf $(DIST_DIR)

@@ -1,17 +1,17 @@
 ---
-title: Test document
+title: This is title
 ---
 
-## fugafuga
+## Template header
 
-piyopiyo
+The link to [sub/index.md](./sub) can be written like:
 
-## fuga
-
-```c
-void main() {
-    return 
-}
+```markdown
+[sub/index.md](sub)
 ```
 
-## 日本語
+The link to [sub_but_same_dir.md](sub_but_same_dir.html) is:
+
+```markdown
+[sub_but_same_dir.md](sub_but_same_dir.html)
+```
